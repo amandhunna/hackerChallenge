@@ -15,7 +15,6 @@ const helper = {
         }
     },
     getKeyValue: (data, key) => {
-        console.log(data, key)
         if (!data || !key) return null;
         let pascalKey = "";
         switch (key) {
@@ -49,8 +48,14 @@ const helper = {
             }
             default: { pascalKey = ""; }
         }
-
-        return data[pascalKey];
+        const value = data[pascalKey] || typeof data[pascalKey] === "number" ? data[pascalKey] : "No data"
+        return value;
+    },
+    slice: (arr, index) => {
+        if (Array.isArray(arr)) {
+            return arr.slice(index * 10, index * 10 + 10);
+        }
+        return [];
     }
 }
 
